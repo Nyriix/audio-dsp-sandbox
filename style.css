@@ -1,0 +1,513 @@
+/* Base Reset & Cozy Dark Theme */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*font-family: 'Courier New', Courier, monospace; /* Keeping it nerdy */
+  font-family: "Pixelify Sans", sans-serif;}
+
+body {
+    background-color: #121214;
+    color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: scroll;
+}
+
+/* Scene Controller */
+.scene {
+    display: none; /* Hidden by default */
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.scene.active {
+    display: block; /* Only show active scene */
+}
+
+/* Act 1 Window (Terminal Window Style) */
+.terminal-box {
+    background-color: #1a1a1e;
+    border: 2px solid #3f3f46;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background-color: #27272a;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #3f3f46;
+}
+
+
+.arrow {
+    color: #f472b6;
+    font-weight: bold;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.red { background-color: #ef4444; }
+.yellow { background-color: #eab308; }
+.green { background-color: #22c55e; }
+
+.terminal-title {
+    font-size: 15px;
+    color: #a1a1aa;
+    margin-left: 10px;
+}
+
+.terminal-content {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #f472b6; /* Cute pinkish tint */
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #a1a1aa;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* Custom System Status Info Box */
+.system-status {
+    background-color: #09090b;
+    border-left: 3px solid #f472b6;
+    padding: 15px;
+    text-align: left;
+    margin-bottom: 30px;
+    border-radius: 0 4px 4px 0;
+}
+
+.system-status p {
+    font-size: 1rem;
+    color: #38bdf8; /* Soft blue */
+    margin-bottom: 5px;
+}
+
+/* Cyber Birthday Button */
+.cyber-btn {
+    background-color: #f472b6;
+    color: #121214;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.3);
+}
+
+.cyber-btn:hover {
+    background-color: #f43f5e;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+}
+
+/* Initial Load Animation */
+.fade-in-entry {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-out-entry {
+    animation: fadeOut 1.2s ease-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+
+
+/* Calibration Meter */
+.meter-bg {
+    width: 100%;
+    height: 20px;
+    background-color: #09090b;
+    border: 1px solid #3f3f46;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.meter-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #f472b6);
+    transition: width 0.1s ease; /* Smooth tracking of audio jumps */
+}
+
+/* Act 2: Puzzle Styling */
+#puzzle-container {
+    height: 210px;
+    width: 280px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    background-color: #3f3f46;
+    border: 2px solid #3f3f46;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+
+#original-img {
+    width: 280px;
+    height: 210px;
+    color: beige;
+    position: absolute;
+    opacity: 0.8;
+    display: none;
+}
+
+.puzzle-tile{
+    background-color: #27272a;
+    background-size: 280px 210px; /* Forces the background image to match the container size exactly */
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 0.1s ease, border-color 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.puzzle-tile:hover {
+    border-color: #f472b6;
+}
+
+#reveal-btn {
+    background-color: #f472b6;
+    color: #121214;
+    border: none;
+    padding: 5px 5px;
+    transform: translateY(5px);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.3);
+}
+
+#reveal-btn:hover {
+    background-color: #f43f5e;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+}
+
+
+/* ==========================================
+   ACT III: LEGO WORKSHOP VISUAL ARCHITECTURE
+   ========================================== */
+.lego-canvas {
+    width: 100%;
+    height: 240px;
+    background-color: #09090b;
+    border: 1px dashed #3f3f46;
+    border-radius: 6px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle architectural blueprint grid lines behind the lego assembly */
+.lego-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(63, 63, 70, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(63, 63, 70, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+#lego-flower-build {
+    position: relative;
+    width: 60px;
+    height: 180px;
+}
+
+/* Structural assembly animations and drop properties */
+.flower-part {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-40px);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flower-part.built {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Blocky LEGO Brick Architecture --- */
+.stem {
+    width: 14px;
+    height: 120px;
+    background-color: #22c55e;
+    bottom: 0;
+    left: 23px;
+    border-radius: 2px;
+    box-shadow: inset -4px 0 rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.leaves {
+    width: 50px;
+    height: 28px;
+    background-color: #16a34a;
+    bottom: 35px;
+    left: 5px;
+    border-radius: 4px;
+    box-shadow: inset -5px 0 rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+/* Blocky Geometric Tulip Crown */
+.petals {
+    width: 44px;
+    height: 50px;
+    background-color: #f43f5e; /* Vibrant Tulip Pink/Red */
+    bottom: 118px;
+    left: 8px;
+    border-radius: 6px 6px 4px 4px;
+    box-shadow: inset -6px 0 rgba(0, 0, 0, 0.25);
+    z-index: 4;
+}
+
+/* Add a neat little LEGO stud look to the top of the petals */
+.petals::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 14px;
+    width: 16px;
+    height: 5px;
+    background-color: #fb7185;
+    border-radius: 2px 2px 0 0;
+}
+
+/* --- Inventory Control Dashboard --- */
+.inventory-container {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.inventory-tray {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.inv-brick {
+    flex: 1;
+    background-color: #27272a;
+    color: #e2e8f0;
+    border: 1px solid #3f3f46;
+    padding: 12px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Interactive highlights when active */
+.inv-brick:not([disabled]):hover {
+    background-color: #3f3f46;
+    border-color: #f472b6;
+    color: #f472b6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 114, 182, 0.15);
+}
+
+.inv-brick:not([disabled]):active {
+    transform: translateY(0);
+}
+
+/* Locked dashboard states */
+.inv-brick[disabled] {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-style: dashed;
+    background-color: #18181b;
+    color: #71717a;
+}
+
+
+/* Act 4: Interactive Cake Styles */
+.cake-container {
+    position: relative;
+    width: 160px;
+    height: 140px;
+    margin: 40px auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cake-base {
+    width: 140px;
+    height: 50px;
+    background-color: #3f3f46;
+    border-radius: 4px;
+    box-shadow: inset -10px 0 rgba(0,0,0,0.15);
+}
+
+.cake-frosting {
+    width: 120px;
+    height: 30px;
+    background-color: #f472b6;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: -4px;
+    position: relative;
+    z-index: 2;
+    box-shadow: inset -8px 0 rgba(0,0,0,0.15);
+}
+
+.candle {
+    width: 8px;
+    height: 35px;
+    background: linear-gradient(to bottom, #fb7185, #f43f5e);
+    border-radius: 2px 2px 0 0;
+    margin-bottom: -2px;
+    position: relative;
+    z-index: 3;
+}
+
+.flame-glow {
+    position: absolute;
+    top: -16px;
+    left: -4px;
+    width: 16px;
+    height: 16px;
+    background-color: #f59e0b;
+    border-radius: 50% 50% 20% 50%;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 12px #f59e0b, 0 0 20px #ef4444;
+    animation: flicker 0.6s infinite alternate ease-in-out;
+    transition: all 0.4s ease;
+}
+
+/* Extinguished flame state */
+.flame-glow.dead {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+    box-shadow: none;
+}
+
+@keyframes flicker {
+    0% { transform: rotate(-45deg) scale(1); }
+    100% { transform: rotate(-43deg) scale(1.15); }
+}
+
+
+/* ==========================================
+   ACT V: FINALE PAGE THEME & ANIMATIONS
+   ========================================== */
+.finale-box {
+    border-color: #f472b6 !important; 
+    box-shadow: 0 0 25px rgba(244, 114, 182, 0.25);
+}
+
+.glitch-text {
+    font-size: 2rem;
+    color: #f472b6;
+    text-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+    margin-bottom: 5px;
+}
+
+.celebration-display {
+    margin: 20px 0;
+    animation: pulseLoop 2s infinite ease-in-out;
+}
+
+.sparkles {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 5px;
+}
+
+.letter-box {
+    background-color: #18181b;
+    border: 1px solid #27272a;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.personal-note {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e4e4e7;
+    margin: 0;
+}
+
+.final-btn {
+    background-color: #f472b6 !important;
+    color: #09090b !important;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.location-text {
+    margin-top: 15px;
+    background-color: #022c22 !important;
+    border-color: #064e3b !important;
+    color: #34d399 !important;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 12px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+@keyframes pulseLoop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}

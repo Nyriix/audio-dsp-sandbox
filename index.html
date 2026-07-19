@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎈</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
+</head>
+<body>
+
+    <audio id="bg-audio" src="assets/zelda.mp3" loop></audio>
+    <audio id="dust" src="assets/dust.mp3"></audio>
+    <audio id="coin" src="assets/coin.mp3"></audio>
+    <audio id="cake" src="assets/cake.mp3"></audio>
+
+
+    <section id="act-1" class="scene active">
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">imad_studios.exe</span>
+            </div>
+            <div class="terminal-content">
+                <h1 id="main-title">Incoming Transmission... 📥</h1>
+                <p id="main-subtitle" class="subtitle">A secure birthday mystery box has been deployed to your coordinates.</p>
+                
+                <div id="intro-content">
+                    <div class="system-status">
+                        <p><span class="arrow">> USER IDENTIFIED: </span> Manel / BFF </p>
+                        <p><span class="arrow">> STATUS:</span> Ready</p>
+                        <p><span class="arrow">> SECURITY CLEARANCE: </span> Lvl 20 !!</p>
+                    </div>
+                    <button id="start-btn" class="cyber-btn">Initialize Protocol</button>
+                </div>
+
+                <div id="calibration-box" style="display: none; margin-top: 20px;">
+                    <button id="auth-mic-btn" class="cyber-btn" style="background-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);">Grant Mic Access</button>
+                    <p id="calibration-status" style="font-size: 0.9rem; margin-top: 20px; display: none; font-weight: bold;"></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="act-2" class="scene">
+    <div class="terminal-box">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">memory_reconstructor.exe</span>
+        </div>
+        <div class="terminal-content">
+            <h2>Decrypting Gift Core... 🧩</h2>
+            <p class="subtitle">Reassemble the corrupted memory frame to unlock the workshop assets.</p>
+            
+            <div id="puzzle-container">
+                <img id="original-img" src="assets/puzzle.jpg" alt="">
+
+            </div>
+
+            <div style="display: flex; flex-direction:row; justify-content: space-between;">
+
+                <p id="puzzle-status" style="font-size: 0.85rem; color: #a1a1aa; margin-top: 15px;">
+                    click two tiles to swap positions.
+                </p>
+                <button  id="reveal-btn"><i class="fa-solid fa-eye"></i></button>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="act-3" class="scene">
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">lego_workshop.exe</span>
+            </div>
+            <div class="terminal-content">
+                <h2 id="workshop-title">Lego Date Workshop 🛠️</h2>
+                <p id="workshop-step" class="subtitle">Step 1: Open the instruction manual...</p>
+                
+                <div class="lego-canvas">
+                    <div id="lego-flower-build">
+                        <div id="part-stem" class="flower-part stem"></div>
+                        <div id="part-leaves" class="flower-part leaves"></div>
+                        <div id="part-petals" class="flower-part petals"></div>
+                    </div>
+                </div>
+
+                <div id="lego-message" class="system-status" style="display: none; min-height: 60px; margin-bottom: 20px;">
+                    <p id="lego-text" style="margin: 0; font-family: monospace; font-size: 0.85rem; line-height: 1.4;"></p>
+                </div>
+
+                <div class="inventory-container">
+                    <p style="font-size: 0.8rem; color: #a1a1aa; margin-bottom: 10px;">Select brick to assemble:</p>
+                    <div class="inventory-tray">
+                        <button id="btn-stem" class="inv-brick">🌱 Stem</button>
+                        <button id="btn-leaves" class="inv-brick" disabled>🍃 Leaves</button>
+                        <button id="btn-petals" class="inv-brick" disabled>🌷 Petals</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="act-4" class="scene">
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">candle_diagnostic.exe</span>
+            </div>
+            <div class="terminal-content" style="text-align: center;">
+                <h2>Make a Wish 🎂</h2>
+                <p id="candle-subtitle" class="subtitle">Blowing audio sensor activated. Blow into your mic to extinguish the flame...</p>
+                
+                <div class="cake-container">
+                    <div class="candle">
+                        <div id="flame" class="flame-glow"></div>
+                    </div>
+                    <div class="cake-frosting"></div>
+                    <div class="cake-base"></div>
+                </div>
+
+                <div id="mic-meter-container" style="width: 100%; background: #18181b; border: 1px solid #27272a; border-radius: 4px; padding: 6px; margin-top: 20px;">
+                    <div id="mic-bar" style="width: 0%; height: 8px; background: #38bdf8; border-radius: 2px; transition: width 0.1s ease;"></div>
+                </div>
+                <p style="font-size: 0.75rem; color: #71717a; margin-top: 5px;">Microphone Input Level</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="act-5" class="scene">
+        <div class="terminal-box finale-box">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">system_celebration.sys</span>
+            </div>
+            <div class="terminal-content" style="text-align: center;">
+                <h1 class="glitch-text">HAPPY BIRTHDAY MANEL! 🥳✨</h1>
+                <p class="subtitle">All security protocols bypassed.</p>
+                
+                <div class="celebration-display">
+                    <span style="font-size: 4rem; display: inline-block; filter: drop-shadow(0 0 8px rgba(244,63,94,0.4));">🌷</span>
+                    <div class="sparkles">✨ 🎉 🎈 🎉 ✨</div>
+                </div>
+
+                <div class="letter-box">
+                    <p class="personal-note">
+                        "To an incredible best friend! Distance might mean we haven't met up in person yet, but building this friendship block-by-block has been one of the absolute best parts of my life. I hope you love your digital Lego tulip puzzily date! Have an amazing birthday, BFF! Lvl 20 looks good on you! 🚀"
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
